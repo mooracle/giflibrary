@@ -1,0 +1,58 @@
+//1-5: creating plugin:
+plugins{
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+}
+
+
+group 'com.mooracle'
+version '1.0-SNAPSHOT'
+
+//ENTRY 1
+/* ENTRY 1: Configuring Gradle for Spring Development
+*   1.  We need to set build.gradle file of the giflibrary to allows us to run web server with the application installed
+*   2.  First we need to set build.gradle to have not only the libraries necessary to compile codes but also tools
+*       necessary to deploy or run the apps in web server
+*       NOTE: gradle plugin are extensions of the Gradle tool itself and add functionality to Gradle built in features
+*   3.  the java plugin is required to produce package of src|main|java directory
+*       NOTE: WE MUST MANUALLY MAKE THIS DIRECTORY FIRST: src/main/java
+*   4.  what we need to do is updating dependencies so that instead simply includes spring-webmvc-library we'll also
+*       includes what's needed to start our application and auto configure it to run in a live web server. To do this
+*       we need new Spring library called Spring Boot that allows us to create a stand alone, runnable Spring apps
+*       that has embedded web server. This dependency already includes spring-webmvc libraries in it
+*       WARNING: BEFORE CODING FOR STEP 1-5 AND SO ON MAKE SURE ALL LIBS AND DEPENDENCIES IN ATEP 1-1 TO 1-4 IS ALREADY
+*           PRESENT. REFRESH GRADLE IF HAVE NOT YET ALSO COMMENT OUT APPLY PLUGINS AND BUILDSCRIPT IF ALREADY CODED!
+*   5.  We use plugins to enable Java IDEA to deploy our code even when the development stage is still incomplete.
+*       WARNING: this script is not the same as the buildscript method seen in the video
+*       we use plugin block this time just follow the patterns
+*       NOTE: if the process succeed then there will be application folder inside the task folder of Gradle tools tab!
+*           this application tab is the place where bootRun function resides.
+*       WARNING: we cannot just run the Spring apps like any other Java apps since we want to run it in Web server
+*           environment. Thus we must make sure that the plugin works! Because we need the bootRun function in the
+*           Gradle tools tab to run this apps. The buildscript method is deprecated please refer to the step 1-5 for
+*           the latest method that works.
+*           However, the reasoning behind this plugin block codes are still unknown
+*   NEXT: ENTRY 2: Adding a Spring Configuration File
+*       NOTE: before going to ENTRY 2 you need to make:
+*       1.  package under the src/main/java directory called: com.mooracle.giflibrary
+*       2.  make a configuration file inside the com.mooracle.giflibrary package called
+*           AppConfig.java (non-mandatory)
+*   GOTO: AppConfig.java for ENTRY 2!
+*   **/
+
+//1-3: this plugin need us to manually create necessary directories
+apply plugin: 'java'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 1-4: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+}
