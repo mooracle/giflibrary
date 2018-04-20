@@ -10,7 +10,7 @@ plugins{
 group 'com.mooracle'
 version '1.0-SNAPSHOT'
 
-//ENTRY 1
+//ENTRY 1; ENTRY 5
 /* ENTRY 1: Configuring Gradle for Spring Development
 *   1.  We need to set build.gradle file of the giflibrary to allows us to run web server with the application installed
 *   2.  First we need to set build.gradle to have not only the libraries necessary to compile codes but also tools
@@ -40,6 +40,23 @@ version '1.0-SNAPSHOT'
 *       2.  make a configuration file inside the com.mooracle.giflibrary package called
 *           AppConfig.java (non-mandatory)
 *   GOTO: AppConfig.java for ENTRY 2!
+*
+*   ENTRY 5: Using Thymeleaf to Serve HTML (From AppConfig.java)
+*       1.  Thymeleaf is a template engine that allows us to write HTML while including place holders for data and POJO
+*       2.  to add Thymeleaf we need to modify the dependencies to:
+*           compile spring-boot-starter-thymeleaf
+*           NOTE:   -first we will try to omit the version of the Thymeleaf see if the Spring Boot Gradle plugin can
+*                   detect the version
+*                   - we substitute tha spring-boot-starter-web with spring-boot-starter-thymeleaf
+*                   - thus if we want to search in the maven central repository choose thymeleaf spring boot starter
+*                   - This already includes all dependencies required by the spring-boot-starter
+*   NEXT: ENTRY 6: Using Thymeleaf to Serve HTML
+*       NOTE: before going to entry 6 there are some things need to be prepared first:
+*           1.  we need to prepare specific directories with SPECIFIC NAMING (MANDATORY): under main create directory
+*               called resources
+*           2.  under resources create directory with SPECIFIC NAMING : templates
+*           3.  inside templates directory create HTML file and name it home.html
+*   GOTO: home.html for ENTRY 6!
 *   **/
 
 //1-3: this plugin need us to manually create necessary directories
@@ -53,6 +70,7 @@ repositories {
 }
 
 dependencies {
-    // 1-4: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+    // 1-4; 5-2: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+
 }

@@ -2,7 +2,6 @@ package com.mooracle.giflibrary.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 //3-8: Add annotation for controller class
 @Controller
@@ -25,12 +24,20 @@ public class GifController {
      *          1.  We need to ADD @ComponenetScan in the AppConfig.java to make Spring framework scan for @Controller
      *              that this GifController class has.
      *      GOTO: AppConfig.java for ENTRY 4!
+     *
+     *  ENTRY 7: Using Thymeleaf to Serve HTML
+     *  1.  Delete the @ResponseBody at listGifs() method because this annotation will make Spring use the returned
+     *      String as output while here we will use Thymeleaf to render the webpage
+     *  2.  Change the return with the name of the html template page we want to render (in this case "home" as to
+     *      refer to: home.html)
+     *  AFTER: we can save and bootRun it to see Thymeleaf in simple action!
+     *  TODO: NEXT: ENTRY 8: Adding Static Assets - list pre-requisite steps
      *  */
 
-    //3-4: build method; 3-5: 3-6: add appropriate annotations:
+    //3-4: build method; 3-5: 3-6: add appropriate annotations: 7-1: delete @ResponseBody
     @RequestMapping(value = "/")
-    @ResponseBody
     public String listGifs(){
-        return "This is the list of all Gif";
+        //7-2: return the name of the html file template:
+        return "home";
     }
 }

@@ -18,6 +18,8 @@ public class AppConfig {
      *      pass the argument of the class where the main method is and the string args for the main method
      *  4.  In order to make Spring to be auto configured we'll need to add @EnableAutoConfiguration
      *      This will enable the Spring to be deployed to web server each time it runs from the plugin set in Gradle
+     *      NOTE: the @EnableAutoConfiguration is the part that makes Spring plugin boot run search for this class as
+     *          initial main class.
      *  NEXT ENTRY 3: Create a Controllers to Handle HTTP Requests
      *  before we go to ENTRY 3 we need to set controller package:
      *      1.  create new package at com.mooracle.giflibrary and named it controller
@@ -27,7 +29,7 @@ public class AppConfig {
      * ENTRY 4: Create a Controller to Handle HTTP requests (From GifController.java)
      *  1.  we need to add @ComponentScan to instruct Spring framework to scan for @Controller
      *  AFTER: we can save and run from the Spark plugin (see ENTRY 1)
-     *  TODO: NEXT: ENTRY 5: Using Thymeleaf to Serve HTML
+     *  NEXT: ENTRY 5: Using Thymeleaf to Serve HTML
      *      1.  we need to go to build.gradle to add dependencies and libraries of Thymeleaf
      *  GOTO: build.gradle for ENTRY 5
      *  */
