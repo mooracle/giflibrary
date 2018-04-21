@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan
 public class AppConfig {
-    //ENTRY 2
+    //ENTRY 2; ENTRY 4
     /**ENTRY 2: Add Spring Config File
      *  1. This is the configuration file for the Spring App we will develop. The name AppConfig is NOT mandatory
      *      it just easy to remember.

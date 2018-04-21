@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ENTRY 6-->
+<!-- ENTRY 6; ENTRY 9-->
 <!--ENTRY 6: Using Thymeleaf to Serve HTML
     1.  WARNING: Thymeleaf is using XML compliant code while IntelliJ IDEA uses HTML 5 compliant code. The main 
         difference lies in the self closing tags such as in <html lang="en">. In XML compliant code all self closing
@@ -8,12 +8,28 @@
     2.  we start building HTML code by adding h1, img src, and p tags
     NEXT: ENTRY 7: Using Thymeleaf to Serve HTML
     GOTO: GifController.java to modify using ENTRY 7!
-    -->
 
-<html lang="en">
+    ENTRY 9: Adding Static Assets
+    1.  WE NEED TO include apps.css as default stylesheet code for home.html but instead of using the traditional <link
+        ref/> tag we will use Thymeleaf feature called xml namespace function and define Thymeleaf function to refer
+        the directory of the static resources (thus the naming is SPECIFICALLY MANDATORY)
+    2.  thus we need to add <html lang /> tag to define the language relation and features of Thymeleaf
+    3.  Since we already set the xmlns (xml name space) we can refer the css using what is called link url expression
+        which means it does not need to refer full absolute url to the static content but it only refer the static
+        directory as root.
+    4.  to use it in the <link/> tag we just add th: in front of href to transform it into link url expression and
+        inside the href referral address we use @{...} to state the address relative to static directory as root
+    5.  As for the compiler-bot.gif image we will ref it from the previous <img src/> tag. We replace the current url
+        to link url expression same as step 9-4 above.
+    TODO: NEXT: ENTRY 10: The Gift of Design - list of pre requisite actions-->
+
+<!--9-2: add xmlns to the html file:-->
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
 <head>
     <!--6-1: fixing to comply to xml code -->
     <meta charset="UTF-8"/>
+    <!--9-3: refer to apps.css using th: link url name space-->
+    <link rel="stylesheet" th:href="@{/css/apps.css}"/>
     <title>GifLibrary</title>
 </head>
 <body>
@@ -22,7 +38,9 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi consequuntur debitis dolores, doloribus 
         ducimus earum, fuga in minima mollitia neque nobis optio pariatur perspiciatis rem saepe suscipit totam u
         llam.</p>
-    <img src="http://placehold.it/300x300/5fcf80/ffffff" alt="logo"/>
+    <!-- 9-5: refer to the newly added gif image
+    WARNING: DON'T FORGET TO ADD th:-->
+    <img th:src="@{/gifimgs/compiler-bot.gif}" alt="logo"/>
 
 </body>
 </html>

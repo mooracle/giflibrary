@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //3-8: Add annotation for controller class
 @Controller
 public class GifController {
-    //ENTRY 3:
+    //ENTRY 3: ENTRY 7
     /** ENTRY 3: Create a Controllers to Handle HTTP Requests
      *  1.  In Spring the controller is a Java Object whose job is to handle requests to certain URI (Uniform Resource
      *      Identifier) which is different from URL.
@@ -31,7 +31,12 @@ public class GifController {
      *  2.  Change the return with the name of the html template page we want to render (in this case "home" as to
      *      refer to: home.html)
      *  AFTER: we can save and bootRun it to see Thymeleaf in simple action!
-     *  TODO: NEXT: ENTRY 8: Adding Static Assets - list pre-requisite steps
+     *  NEXT: ENTRY 8: Adding Static Assets - list pre-requisite steps
+     *      1.  create new directory under resource directory name it SPECIFICALLY as static
+     *      2.  inside the static directory create ne css file and name it apps.css
+     *      3.  inside the static directory make new directory make a new directory name it gifimgs
+     *      4. download the file compiler-bot.gif and place it inside the gifimgs directory
+     *  GOTO: apps.css for ENTRY 8: Adding Static Assets
      *  */
 
     //3-4: build method; 3-5: 3-6: add appropriate annotations: 7-1: delete @ResponseBody
