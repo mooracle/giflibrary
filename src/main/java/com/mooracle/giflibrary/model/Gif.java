@@ -1,5 +1,7 @@
 package com.mooracle.giflibrary.model;
 
+import java.time.LocalDate;
+
 public class Gif {
     /** ENTRY 10: Modelling Data with POJOs
      *  1.  One of the most powerful feature in Spring is the ability to use Plain Old Java Object to control the
@@ -15,5 +17,53 @@ public class Gif {
      *  4.  Create getter and Setter for all variables (fields)
      *
      *  TODO: NEXT: ENTRY 11: Feeding Data to Our Thymeleaf Templates
-     *  GOTO: GifController.java for ENTRY 11!*/
+     *  GOTO: GifController.java for ENTRY 11!
+     *  */
+
+    //10-3: attribute fields declaration and constructor
+    private String name;
+    private LocalDate dateUploaded;
+    private String username;
+    private boolean favorite;
+
+    public Gif(String name, LocalDate dateUploaded, String username, boolean favorite) {
+        this.name = name;
+        this.dateUploaded = dateUploaded;
+        this.username = username;
+        this.favorite = favorite;
+    }
+
+    //10-4: getters and setters
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDateUploaded() {
+        return dateUploaded;
+    }
+
+    public void setDateUploaded(LocalDate dateUploaded) {
+        this.dateUploaded = dateUploaded;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
 }
