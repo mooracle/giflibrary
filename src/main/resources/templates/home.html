@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ENTRY 6; ENTRY 9-->
 <!--ENTRY 6: Using Thymeleaf to Serve HTML
-    1.  WARNING: Thymeleaf is using XML compliant code while IntelliJ IDEA uses HTML 5 compliant code. The main 
+    1.  WARNING: Thymeleaf is using XML compliant code while IntelliJ IDEA uses HTML 5 compliant code. The main
         difference lies in the self closing tags such as in <html lang="en">. In XML compliant code all self closing
         tags must be in the form of <html lang="en"/> or it must be closed using />!
         NOTE: yes we can modify Thymeleaf behavior to use the HTML 5 compliant but for now let's just stick to XML
@@ -21,26 +21,88 @@
         inside the href referral address we use @{...} to state the address relative to static directory as root
     5.  As for the compiler-bot.gif image we will ref it from the previous <img src/> tag. We replace the current url
         to link url expression same as step 9-4 above.
-    TODO: NEXT: ENTRY 10: The Gift of Design - list of pre requisite actions-->
+    NEXT: ENTRY 10: The Gift of Design - list of pre requisite actions
+        1.  Download and substitute (meaning you need to delete the current content first) the content of resources
+            directory with all inside the downloaded resources directory
+            NOTE: this contains code from materialize for styling which format the web page as intended by material
+            design developed by Google
+        2.  The comments previous to this point are backup from GitHub thus many steps are not showed since the original
+            home.html is already deleted.
+            NOTE: This is why I prevent to any commit to Git before the substitution operations
+        3.  Create new package under com.mooracle.giflibrary and name it model (this is where we will put POJO models)
+        4.  Create new java class inside model package and name it Gif.java
+    GOTO: Gif.java for ENTRY 10: Modelling Data with POJOs!
+    -->
 
-<!--9-2: add xmlns to the html file:-->
-<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--6-1: fixing to comply to xml code -->
     <meta charset="UTF-8"/>
-    <!--9-3: refer to apps.css using th: link url name space-->
-    <link rel="stylesheet" th:href="@{/css/apps.css}"/>
-    <title>GifLibrary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="icon" th:href="@{/favicon.png}" />
+
+    <link rel="stylesheet" th:href="@{/vendor/materialize/css/materialize.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" th:href="@{/app.css}" />
+
+    <title>giflib | Home</title>
 </head>
 <body>
-    <!-- 6-2: building the HTML page-->
-    <h1>Home</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi consequuntur debitis dolores, doloribus 
-        ducimus earum, fuga in minima mollitia neque nobis optio pariatur perspiciatis rem saepe suscipit totam u
-        llam.</p>
-    <!-- 9-5: refer to the newly added gif image
-    WARNING: DON'T FORGET TO ADD th:-->
-    <img th:src="@{/gifimgs/compiler-bot.gif}" alt="logo"/>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="container">
+                <a th:href="@{/}" class="brand-logo">gif<span>.</span>lib</a>
+                <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li class="active"><a th:href="@{/}">Explore</a></li>
+                    <li><a th:href="@{/categories}">Categories</a></li>
+                    <li><a th:href="@{/favorites}">Favorites</a></li>
+                </ul>
+                <ul id="mobile-nav" class="side-nav">
+                    <li class="active"><a th:href="@{/}">Explore</a></li>
+                    <li><a th:href="@{/categories}">Categories</a></li>
+                    <li><a th:href="@{/favorites}">Favorites</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="search-bar container">
+        <div class="row">
+            <div class="col s12">
+                <form action="#" method="get">
+                    <div class="input-field">
+                        <input name="q" type="search" placeholder="Search all gifs..." required="required" autocomplete="off"/>
+                        <i class="material-icons">search</i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="gifs container">
+        <div class="row">
+            <div class="col s12 l4">
+                <a>
+                    <img th:src="@{/gifs/compiler-bot.gif}" />
+                    <a href="#" class="mark favorite"></a>
+                </a>
+            </div>
+            <div class="col s12 l4">
+                <a>
+                    <img th:src="@{/gifs/compiler-bot.gif}" />
+                    <a href="#" class="mark favorite"></a>
+                </a>
+            </div>
+            <div class="col s12 l4">
+                <a>
+                    <img th:src="@{/gifs/compiler-bot.gif}" />
+                    <a href="#" class="mark favorite"></a>
+                </a>
+            </div>
+        </div>
+    </div>
 
+<script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>
+<script th:src="@{/vendor/materialize/js/materialize.js}"></script>
+<script th:src="@{/app.js}"></script>
 </body>
 </html>
