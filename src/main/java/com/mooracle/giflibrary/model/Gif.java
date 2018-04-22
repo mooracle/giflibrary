@@ -16,7 +16,7 @@ public class Gif {
      *  3.  Inside class Gif put all necessary attributes into declared fields and constructor
      *  4.  Create getter and Setter for all variables (fields)
      *
-     *  TODO: NEXT: ENTRY 11: Feeding Data to Our Thymeleaf Templates
+     *  NEXT: ENTRY 11: Feeding Data to Our Thymeleaf Templates
      *  GOTO: GifController.java for ENTRY 11!
      *  */
 

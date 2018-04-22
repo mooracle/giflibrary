@@ -1,4 +1,32 @@
 <!DOCTYPE html>
+<!-- ENTRY 12: Feeding Data to Our Thymeleaf Templates
+    1.  we need to incorporate our POJO an object of gif which already put inside the modelMap
+    2.  thus each time the GifController.gifDetails() method handles a request it automatically has gif POJO inside it
+    3.  Then we can utilize that POJO inside the HTML template that the GifController.gifDetails method returns.
+    4.  Thus in this case we want to change the behavior of this HTML templates that in default only showed compiler-bot
+        gif image. We want this template display gif image chosen in the GifController.gifDetails method.
+    5.  To do this we need to find the part of the HTML code that display the gif image. In this case it is inside the
+        <div class="gif-detail container>
+    6.  We need to modify the <img> tag which already has Thymeleaf's URL link expression hence the th: keyword. We need
+        to add another Thymeleaf feature called Spring Variable Expression which denoted with '$' sign.
+        -   Using this we can access Variable defined as POJO in this case gif. In order to display specific gif image,
+            we need to specify the path to the gif image file as specified in URL link expression.
+        -   Thus we can use the name field variable to determine which gif image to choose and add .gif extension in the
+            end of the expression
+        -   By using the Spring Variable Expression we can utilize the POJO gif to call the gif.getName() method in
+            order to gain the name variable value for specific gif object
+            NOTE: HOWEVER, since this is a POJO we can just refer to gif.name to get the name value of the gif object
+            WARNING: This does not mean that we directly fetch a private field name in the gif object. This only works
+                    because we already coded a getName() method inside the gif POJO thus Java compiler and Spring knows
+                    we want to fetch name value using the right channel. Without getName() method presence this will not
+                    work AND THE $ USES { } NOT ( ) SO IT MUST ${....}!!
+            NOTE: we use String concatenation since gif,name is a String variable!
+      NOTE: in the <title th:text> tag it also use the Spring Variable Expression '$' to put the name of the gif object
+            in the title of the web page. By the way the th:text also a feature of Spring that override the text value
+            on the standard tag which commonly located between the opening and closing tags.
+    TODO: NEXT: ENTRY 13: Create a Data Repository Component - list of pre-requisite actions:
+        -->
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -43,10 +71,12 @@
             </div>
         </div>
     </div>
+    <!-- 12-5: find the location of the gif display-->
     <div class="gif-detail container">
         <div class="frame row">
             <div class="col s12">
-                <img th:src="@{/gifs/compiler-bot.gif}" alt="gif" />
+                <!-- 12-6: modify the img tag-->
+                <img th:src="@{'/gifs/'+ ${gif.name} + '.gif'}" alt="gif" />
                 <a href="#" class="mark favorite"></a>
             </div>
         </div>
